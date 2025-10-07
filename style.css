@@ -1,3 +1,50 @@
+/* ======================================================= */
+/* 1. LAYOUT PRINCIPAL (FLEXBOX) */
+/* ======================================================= */
+
+main {
+    margin: 20px auto;
+    padding: 20px;
+    
+    display: flex; 
+    gap: 30px; 
+    align-items: flex-start; 
+}
+/* ======================================================= */
+/* 2. ASIGNACIÓN DE ANCHO Y ORDEN */
+/* ======================================================= */
+
+#productos {
+    /* La lista de productos (izquierda) ocupa 2/3 del espacio */
+    flex-basis: 85%; /* Define un ancho base */
+    order: 1; /* Asegura que vaya primero (a la izquierda) */
+
+    /* Asegúrate de que los colores de fondo sean sólidos para el contraste con el fondo animado */
+    background-color: rgba(255, 255, 255, 0.95); 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 0; /* Eliminamos el margen inferior, ya no es necesario */
+}
+
+#carrito-compras {
+    /* El carrito (derecha) ocupa 1/3 del espacio */
+    flex-basis: 50%; /* Define un ancho base */
+    order: 2; /* Asegura que vaya segundo (a la derecha) */
+
+    /* Asegúrate de que los colores de fondo sean sólidos */
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    position: sticky; /* Hacemos que el carrito permanezca visible al hacer scroll */
+    top: 20px; /* Distancia desde la parte superior de la ventana */
+}
+
+#metodos-pago-contenedor {
+    /* Ajustamos el ancho al 100% del carrito */
+    width: 100%;
+}
 /* Configuración Global y Tipografía */
 body {
     font-family: Arial, sans-serif;
@@ -26,17 +73,27 @@ body {
     }
 }
 header {
-    /* REVERSIÓN: Fondo rojo Cineplanet */
-    background-color: #e50914; /* Rojo Cineplanet */
-    color: white;
-    padding: 20px;
+    /* Fondo: Añadimos la URL de la imagen */
+    background: url('imagenes/fondo_cine.jpg') no-repeat center center;
+    background-size: cover; 
+    
+    color: white; 
+    padding: 40px 20px; /* Damos más altura al encabezado */
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra más suave */
-}
-header h1 {
-    margin-bottom: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
+    
+    /* Sombra de texto para asegurar la legibilidad sobre la imagen */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
+header h1 {
+    /* Fuente profesional importada (Oswald) */
+    font-family: 'Oswald', sans-serif; 
+    font-size: 2.8em; 
+    letter-spacing: 2px; /* Espaciado para un look de cartelera */
+    margin-bottom: 5px;
+    font-weight: 700;
+}
 main {
     max-width: 900px;
     margin: 20px auto;
@@ -82,12 +139,13 @@ main {
 
 /* Estilo para la Sección de Contacto */
 #contacto {
-    background-color: #333; /* Fondo oscuro para destacar */
-    color: white;
+    background-color: transparent; /* Fondo transparente para que el color del footer sea visible */
     padding: 20px;
-    border-radius: 8px;
+    color: white; /* Texto blanco para contrastar con el fondo oscuro del footer */
+    border-radius: 0;
+    margin: 0 auto 10px;
+    max-width: 1200px; /* Opcional: Centrar el contenido de contacto si el footer es muy ancho */
 }
-
 .info-contacto a {
     color: #ffcc00; /* Enlaces en amarillo para contraste */
     text-decoration: none;
@@ -107,8 +165,8 @@ main {
 /* Footer (Pie de Página) */
 footer {
     text-align: center;
-    padding: 10px;
-    background-color: #222;
+    padding: 10px 0 20px; /* Ajustamos el padding */
+    background-color: #222; /* Fondo oscuro */
     color: #aaa;
     margin-top: 20px;
 }
@@ -334,4 +392,31 @@ footer {
     background-color: #e50914; /* Rojo Cineplanet */
     color: white;
     border-color: #e50914;
+}
+.qr-container {
+    padding: 15px;
+    border: 1px dashed #e50914; /* Borde rojo punteado */
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.qr-image {
+    max-width: 180px; /* Tamaño adecuado para un QR */
+    height: auto;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin: 10px auto;
+    display: block; /* Centra la imagen */
+}
+
+/* Estilo para el botón de acción final (Ya Pagué / Pagar con Tarjeta) */
+.btn-pago-final {
+    background-color: #25d366; 
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
