@@ -3,10 +3,27 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    /* REVERSIÓN: Fondo gris claro y texto oscuro */
-    background-color: #f4f4f4; /* Fondo gris claro */
-    color: #333; /* Texto oscuro */
     line-height: 1.6;
+    color: #333; /* Texto oscuro para secciones claras */
+    
+    /* CÓDIGO NUEVO PARA EL FONDO ANIMADO */
+    background: linear-gradient(-45deg, #e50914, #ffcc00, #333333, #000000);
+    background-size: 400% 400%; /* Hacemos el fondo 4 veces más grande */
+    animation: gradientShift 15s ease infinite; /* Aplicamos la animación */
+    height: 100vh; /* Aseguramos que ocupe toda la altura de la ventana */
+}
+
+/* Definición de la Animación (Keyframes) */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%; /* Inicio: Posición izquierda-media */
+    }
+    50% {
+        background-position: 100% 50%; /* Mitad: Posición derecha-media */
+    }
+    100% {
+        background-position: 0% 50%; /* Fin: Vuelve al inicio */
+    }
 }
 header {
     /* REVERSIÓN: Fondo rojo Cineplanet */
@@ -27,15 +44,12 @@ main {
 }
 
 #productos {
-    /* REVERSIÓN: Fondo blanco para la sección de productos */
-    background-color: white; 
-    color: #333; /* Texto oscuro */
+    background-color: rgba(255, 255, 255, 0.95); /* Blanco semi-transparente */
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra más fuerte */
     margin-bottom: 30px;
 }
-
 /* Ajuste del color de los títulos de productos */
 #lista-productos h3 {
     margin-top: 0;
@@ -195,13 +209,12 @@ footer {
 /* ======================================================= */
 
 #carrito-compras {
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.95); /* Blanco semi-transparente */
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     margin-bottom: 30px;
 }
-
 #lista-carrito {
     list-style: none;
     padding: 0;
