@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Cineplanet - Combos y Entradas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Venta de Combos y Entradas Cineplanet</h1>
+        <p>¡Disfruta del cine con los mejores precios!</p>
+    </header>
+
+    <main>
+        <section id="productos">
+        
+            <h2>🍿 Nuestros Productos</h2>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Buscar entradas o combos..." onkeyup="filtrarProductos()">
+            </div>
+            <ul id="lista-productos">
+                </ul>
+            <ul id="lista-productos">
+                </ul>
+        </section>
+    <section id="carrito-compras">
+        <h2>🛒 Tu Carrito</h2>
+        <ul id="lista-carrito">
+            <li class="carrito-vacio">El carrito está vacío.</li>
+        </ul>
+        <div id="resumen-carrito">
+            <p>Total: <span id="total-carrito">S/ 0.00</span></p>
+        </div>
+        
+        <button id="proceder-pago" disabled>Proceder al Pago</button>
+
+        <div id="metodos-pago-contenedor" class="hidden">
+            <h3>Selecciona tu Método de Pago:</h3>
+            
+            <button class="btn-pago" data-metodo="whatsapp">📲 Confirmar y Pagar por WhatsApp (Pago contra-entrega o Yape directo)</button>
+            <button class="btn-pago" data-metodo="yape_plin_qr">💳 Generar QR / Pago Efectivo (Pasarela)</button>
+            <button class="btn-pago" data-metodo="tarjeta">🛒 Pagar con Tarjeta de Crédito/Débito (Pasarela)</button>
+        </div>
+    </section>
+    <section id="contacto">
+    <h2>📞 Contacto para Compras</h2>
+    <p>Realiza tu pedido o consulta por disponibilidad:</p>
+    <div class="info-contacto">
+        <p><strong>WhatsApp:</strong> <a href="#" id="whatsappLink" target="_blank"><span id="whatsappText"></span></a></p>
+        <p><strong>Teléfono:</strong> <a href="#" id="phoneLink"><span id="phoneText"></span></a></p>
+        <p><strong>Email:</strong> <a href="#" id="emailLink"><span id="emailText"></span></a></p>
+        <p class="nota-contacto">¡Pregunta por nuestros combos especiales y ofertas de entradas!</p>
+    </div>
+</section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Venta de Cineplanet. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

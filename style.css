@@ -1,0 +1,324 @@
+/* Configuración Global y Tipografía */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* REVERSIÓN: Fondo gris claro y texto oscuro */
+    background-color: #f4f4f4; /* Fondo gris claro */
+    color: #333; /* Texto oscuro */
+    line-height: 1.6;
+}
+header {
+    /* REVERSIÓN: Fondo rojo Cineplanet */
+    background-color: #e50914; /* Rojo Cineplanet */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+}
+header h1 {
+    margin-bottom: 5px;
+}
+
+main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+#productos {
+    /* REVERSIÓN: Fondo blanco para la sección de productos */
+    background-color: white; 
+    color: #333; /* Texto oscuro */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+    margin-bottom: 30px;
+}
+
+/* Ajuste del color de los títulos de productos */
+#lista-productos h3 {
+    margin-top: 0;
+    /* REVERSIÓN: Títulos en rojo Cineplanet */
+    color: #e50914; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Ajuste del color de fondo de cada item de la lista de productos */
+#lista-productos li {
+    /* REVERSIÓN: Fondo suave y borde rojo */
+    background-color: #fff8f8; /* Fondo suave para cada producto */
+    border-left: 5px solid #e50914; /* Barra roja de acento */
+    /* ... otros estilos li ... */
+}#lista-productos h3 {
+    margin-top: 0;
+    color: #e50914; /* Título del producto en rojo */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#lista-productos span {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333; /* Precio más visible */
+}
+
+/* Estilo para la Sección de Contacto */
+#contacto {
+    background-color: #333; /* Fondo oscuro para destacar */
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.info-contacto a {
+    color: #ffcc00; /* Enlaces en amarillo para contraste */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.info-contacto a:hover {
+    text-decoration: underline;
+}
+
+.nota-contacto {
+    margin-top: 15px;
+    font-style: italic;
+    color: #ccc;
+}
+
+/* Footer (Pie de Página) */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #222;
+    color: #aaa;
+    margin-top: 20px;
+}
+/* Estilo para el Campo de Búsqueda */
+.search-container {
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box; /* Asegura que el padding no cambie el ancho total */
+}
+
+#searchInput:focus {
+    border-color: #e50914; /* Borde rojo al enfocar */
+    outline: none;
+    box-shadow: 0 0 5px rgba(229, 9, 20, 0.3);
+}
+/* ======================================================= */
+/* ESTILOS PARA LA IMAGEN DEL PRODUCTO (NUEVO) */
+/* ======================================================= */
+
+/* Hacemos que cada item de la lista (li) use Flexbox 
+   para alinear la imagen y el texto en la misma fila */
+#lista-productos li {
+    /* Mantenemos el estilo anterior */
+    background-color: #fff8f8; 
+    border-left: 5px solid #e50914; 
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    
+    /* Configuración clave para el layout (diseño) */
+    display: flex;
+    justify-content: space-between; /* Separa la info del texto de la imagen */
+    align-items: center; /* Centra verticalmente */
+    gap: 15px; /* Espacio entre el texto y la imagen */
+}
+
+/* Estilo para el contenedor de la información del texto */
+.producto-info {
+    flex-grow: 1; /* Permite que la información ocupe la mayor parte del espacio */
+}
+
+/* Estilo para la imagen */
+.producto-imagen {
+    width: 100px; /* Ancho fijo para la imagen */
+    height: 100px; /* Alto fijo */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+    border: 1px solid #ccc;
+    flex-shrink: 0; /* Evita que la imagen se reduzca si el texto es muy largo */
+}
+/* ======================================================= */
+/* ESTILOS PARA DESTACAR PRODUCTOS */
+/* ======================================================= */
+
+.producto-destacado {
+    /* Fondo que resalta más */
+    background-color: #fff0b3; /* Amarillo claro suave */
+    
+    /* Borde doble para llamar la atención */
+    border: 3px solid #ffcc00; /* Borde amarillo más fuerte */
+    
+    /* Sombra para que flote un poco */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    
+    /* Una pequeña animación o transformación */
+    transform: scale(1.02); /* Lo hace un 2% más grande */
+    transition: transform 0.3s ease; /* Transición suave */
+}
+/* Podemos añadir una etiqueta "OFERTA" */
+.producto-destacado::before {
+    content: "🌟 ¡OFERTA ESPECIAL! 🌟";
+    position: absolute;
+    top: -10px; /* Sube un poco la etiqueta */
+    right: -10px;
+    background-color: #e50914; /* Rojo Cineplanet */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: bold;
+    z-index: 10;
+}
+
+/* Es necesario que el li sea "relative" para posicionar el::before */
+#lista-productos li {
+    position: relative; 
+    /* ... el resto de tu estilo 'li' anterior ... */
+}
+/* ======================================================= */
+/* ESTILOS DEL CARRITO Y BOTONES */
+/* ======================================================= */
+
+#carrito-compras {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+#lista-carrito {
+    list-style: none;
+    padding: 0;
+    border-top: 1px solid #eee;
+    margin-bottom: 15px;
+}
+
+#lista-carrito li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.carrito-subtotal {
+    font-weight: bold;
+    color: #e50914; /* Rojo Cineplanet */
+}
+
+.btn-agregar {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-agregar:hover {
+    background-color: #e50914; /* Rojo de hover */
+}
+
+#resumen-carrito p {
+    font-size: 1.2em;
+    font-weight: bold;
+    border-top: 2px solid #333;
+    padding-top: 10px;
+    margin-bottom: 15px;
+}
+
+#finalizar-compra {
+    width: 100%;
+    background-color: #25d366; /* Verde WhatsApp */
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#finalizar-compra:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+/* Estilo para ocultar el contenedor de pago inicialmente */
+#metodos-pago-contenedor.hidden {
+    display: none;
+}
+/* Estilo para el botón de eliminar del carrito */
+.btn-eliminar {
+    background-color: transparent;
+    color: #e50914; /* Rojo para el botón */
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    padding: 0 5px;
+    margin-left: 10px;
+    transition: transform 0.2s;
+}
+
+.btn-eliminar:hover {
+    transform: scale(1.1);
+}
+
+/* Ajuste para la línea del carrito para alinear el botón */
+#lista-carrito li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between; /* Permite que el botón se mueva al final */
+    align-items: center; /* Centra verticalmente */
+}
+/* ======================================================= */
+/* ESTILOS PARA LOS FILTROS DE CATEGORÍA */
+/* ======================================================= */
+.filtro-botones {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-filtro {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    margin: 0 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-filtro:hover {
+    background-color: #e0e0e0;
+}
+
+/* Estilo para el botón de filtro activo (seleccionado) */
+.btn-filtro.active {
+    background-color: #e50914; /* Rojo Cineplanet */
+    color: white;
+    border-color: #e50914;
+}
