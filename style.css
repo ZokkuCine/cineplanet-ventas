@@ -1,131 +1,99 @@
 /* ======================================================= */
-/* 1. LAYOUT PRINCIPAL (FLEXBOX) */
+/* 1. CONFIGURACIÓN GLOBAL Y FONDO DE PÁGINA */
 /* ======================================================= */
-
-main {
-    margin: 20px auto;
-    padding: 20px;
-    
-    display: flex; 
-    gap: 30px; 
-    align-items: flex-start; 
-}
-/* ======================================================= */
-/* 2. ASIGNACIÓN DE ANCHO Y ORDEN */
-/* ======================================================= */
-
-#productos {
-    /* La lista de productos (izquierda) ocupa 2/3 del espacio */
-    flex-basis: 85%; /* Define un ancho base */
-    order: 1; /* Asegura que vaya primero (a la izquierda) */
-
-    /* Asegúrate de que los colores de fondo sean sólidos para el contraste con el fondo animado */
-    background-color: rgba(255, 255, 255, 0.95); 
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 0; /* Eliminamos el margen inferior, ya no es necesario */
-}
-
-#carrito-compras {
-    /* El carrito (derecha) ocupa 1/3 del espacio */
-    flex-basis: 50%; /* Define un ancho base */
-    order: 2; /* Asegura que vaya segundo (a la derecha) */
-
-    /* Asegúrate de que los colores de fondo sean sólidos */
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    position: sticky; /* Hacemos que el carrito permanezca visible al hacer scroll */
-    top: 20px; /* Distancia desde la parte superior de la ventana */
-}
-
-#metodos-pago-contenedor {
-    /* Ajustamos el ancho al 100% del carrito */
-    width: 100%;
-}
-/* Configuración Global y Tipografía */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    color: #333; /* Texto oscuro para secciones claras */
+    color: #333; 
     
-    /* CÓDIGO NUEVO PARA EL FONDO ANIMADO */
-    background: linear-gradient(-45deg, #e50914, #ffcc00, #333333, #000000);
-    background-size: 400% 400%; /* Hacemos el fondo 4 veces más grande */
-    animation: gradientShift 15s ease infinite; /* Aplicamos la animación */
-    height: 100vh; /* Aseguramos que ocupe toda la altura de la ventana */
+    /* FONDO PRINCIPAL: TU IMAGEN DE CINE (1fondo_cine.jpg) */
+    background-color: #1a1a1a; 
+    background-image: url('imagenes/1fondo_cine.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-position: center center;
+
+    height: 100%; 
+    min-height: 100vh;
 }
 
-/* Definición de la Animación (Keyframes) */
-@keyframes gradientShift {
-    0% {
-        background-position: 0% 50%; /* Inicio: Posición izquierda-media */
-    }
-    50% {
-        background-position: 100% 50%; /* Mitad: Posición derecha-media */
-    }
-    100% {
-        background-position: 0% 50%; /* Fin: Vuelve al inicio */
-    }
-}
+/* ======================================================= */
+/* 2. HEADER CON IMAGEN TEMÁTICA (fondo_cine.jpg) */
+/* ======================================================= */
 header {
-    /* Fondo: Añadimos la URL de la imagen */
+    /* AQUÍ SE CARGA LA IMAGEN PARA EL ENCABEZADO */
     background: url('imagenes/fondo_cine.jpg') no-repeat center center;
     background-size: cover; 
     
     color: white; 
-    padding: 40px 20px; /* Damos más altura al encabezado */
+    padding: 40px 20px; 
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
-    
-    /* Sombra de texto para asegurar la legibilidad sobre la imagen */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 header h1 {
-    /* Fuente profesional importada (Oswald) */
     font-family: 'Oswald', sans-serif; 
     font-size: 2.8em; 
-    letter-spacing: 2px; /* Espaciado para un look de cartelera */
+    letter-spacing: 2px; 
     margin-bottom: 5px;
     font-weight: 700;
 }
+
+/* ======================================================= */
+/* 3. LAYOUT PRINCIPAL (FLEXBOX Y ANCHOS CORRECTOS) */
+/* ======================================================= */
+
 main {
-    max-width: 900px;
+    max-width: 1400px; 
     margin: 20px auto;
     padding: 20px;
+    display: flex; 
+    gap: 30px; 
+    align-items: flex-start; 
 }
 
 #productos {
-    background-color: rgba(255, 255, 255, 0.95); /* Blanco semi-transparente */
+    flex-basis: 75%; 
+    order: 1; 
+    flex-grow: 1; 
+    background-color: rgba(255, 255, 255, 0.9); 
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra más fuerte */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     margin-bottom: 30px;
 }
-/* Ajuste del color de los títulos de productos */
-#lista-productos h3 {
-    margin-top: 0;
-    /* REVERSIÓN: Títulos en rojo Cineplanet */
-    color: #e50914; 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+#carrito-compras {
+    flex-basis: 25%; 
+    order: 2; 
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    position: sticky; 
+    top: 20px; 
+    margin-bottom: 30px;
 }
 
-/* Ajuste del color de fondo de cada item de la lista de productos */
-#lista-productos li {
-    /* REVERSIÓN: Fondo suave y borde rojo */
-    background-color: #fff8f8; /* Fondo suave para cada producto */
-    border-left: 5px solid #e50914; /* Barra roja de acento */
-    /* ... otros estilos li ... */
-}#lista-productos h3 {
+/* ======================================================= */
+/* OCULTAR ELEMENTO CRÍTICO */
+/* ======================================================= */
+
+#metodos-pago-contenedor.hidden {
+    display: none !important; 
+}
+
+/* ======================================================= */
+/* 4. ESTILOS DE PRODUCTOS Y LISTA */
+/* ======================================================= */
+
+#lista-productos h3 {
     margin-top: 0;
-    color: #e50914; /* Título del producto en rojo */
+    color: #e50914; 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -134,289 +102,153 @@ main {
 #lista-productos span {
     font-size: 1.2em;
     font-weight: bold;
-    color: #333; /* Precio más visible */
+    color: #333; 
 }
 
-/* Estilo para la Sección de Contacto */
-#contacto {
-    background-color: transparent; /* Fondo transparente para que el color del footer sea visible */
-    padding: 20px;
-    color: white; /* Texto blanco para contrastar con el fondo oscuro del footer */
-    border-radius: 0;
-    margin: 0 auto 10px;
-    max-width: 1200px; /* Opcional: Centrar el contenido de contacto si el footer es muy ancho */
-}
-.info-contacto a {
-    color: #ffcc00; /* Enlaces en amarillo para contraste */
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.info-contacto a:hover {
-    text-decoration: underline;
-}
-
-.nota-contacto {
-    margin-top: 15px;
-    font-style: italic;
-    color: #ccc;
-}
-
-/* Footer (Pie de Página) */
-footer {
-    text-align: center;
-    padding: 10px 0 20px; /* Ajustamos el padding */
-    background-color: #222; /* Fondo oscuro */
-    color: #aaa;
-    margin-top: 20px;
-}
-/* Estilo para el Campo de Búsqueda */
-.search-container {
-    margin-bottom: 20px;
-}
-
-#searchInput {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1em;
-    box-sizing: border-box; /* Asegura que el padding no cambie el ancho total */
-}
-
-#searchInput:focus {
-    border-color: #e50914; /* Borde rojo al enfocar */
-    outline: none;
-    box-shadow: 0 0 5px rgba(229, 9, 20, 0.3);
-}
-/* ======================================================= */
-/* ESTILOS PARA LA IMAGEN DEL PRODUCTO (NUEVO) */
-/* ======================================================= */
-
-/* Hacemos que cada item de la lista (li) use Flexbox 
-   para alinear la imagen y el texto en la misma fila */
 #lista-productos li {
-    /* Mantenemos el estilo anterior */
     background-color: #fff8f8; 
     border-left: 5px solid #e50914; 
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 4px;
-    
-    /* Configuración clave para el layout (diseño) */
-    display: flex;
-    justify-content: space-between; /* Separa la info del texto de la imagen */
-    align-items: center; /* Centra verticalmente */
-    gap: 15px; /* Espacio entre el texto y la imagen */
-}
-
-/* Estilo para el contenedor de la información del texto */
-.producto-info {
-    flex-grow: 1; /* Permite que la información ocupe la mayor parte del espacio */
-}
-
-/* Estilo para la imagen */
-.producto-imagen {
-    width: 100px; /* Ancho fijo para la imagen */
-    height: 100px; /* Alto fijo */
-    object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
-    border-radius: 5px; /* Bordes ligeramente redondeados */
-    border: 1px solid #ccc;
-    flex-shrink: 0; /* Evita que la imagen se reduzca si el texto es muy largo */
-}
-/* ======================================================= */
-/* ESTILOS PARA DESTACAR PRODUCTOS */
-/* ======================================================= */
-
-.producto-destacado {
-    /* Fondo que resalta más */
-    background-color: #fff0b3; /* Amarillo claro suave */
-    
-    /* Borde doble para llamar la atención */
-    border: 3px solid #ffcc00; /* Borde amarillo más fuerte */
-    
-    /* Sombra para que flote un poco */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    
-    /* Una pequeña animación o transformación */
-    transform: scale(1.02); /* Lo hace un 2% más grande */
-    transition: transform 0.3s ease; /* Transición suave */
-}
-/* Podemos añadir una etiqueta "OFERTA" */
-.producto-destacado::before {
-    content: "🌟 ¡OFERTA ESPECIAL! 🌟";
-    position: absolute;
-    top: -10px; /* Sube un poco la etiqueta */
-    right: -10px;
-    background-color: #e50914; /* Rojo Cineplanet */
-    color: white;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 0.8em;
-    font-weight: bold;
-    z-index: 10;
-}
-
-/* Es necesario que el li sea "relative" para posicionar el::before */
-#lista-productos li {
     position: relative; 
-    /* ... el resto de tu estilo 'li' anterior ... */
-}
-/* ======================================================= */
-/* ESTILOS DEL CARRITO Y BOTONES */
-/* ======================================================= */
-
-#carrito-compras {
-    background-color: rgba(255, 255, 255, 0.95); /* Blanco semi-transparente */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 30px;
-}
-#lista-carrito {
-    list-style: none;
-    padding: 0;
-    border-top: 1px solid #eee;
-    margin-bottom: 15px;
-}
-
-#lista-carrito li {
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
+    
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 15px; 
 }
 
-.carrito-subtotal {
-    font-weight: bold;
-    color: #e50914; /* Rojo Cineplanet */
+.producto-info { flex-grow: 1; }
+.producto-imagen { width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 1px solid #ccc; flex-shrink: 0; }
+
+.producto-destacado { background-color: #fff0b3; border: 3px solid #ffcc00; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); transform: scale(1.02); transition: transform 0.3s ease; }
+.producto-destacado::before {
+    content: "🌟 ¡OFERTA ESPECIAL! 🌟"; position: absolute; top: -10px; right: -10px; background-color: #e50914; color: white; padding: 5px 10px; border-radius: 4px; font-size: 0.8em; font-weight: bold; z-index: 10;
 }
 
+/* ESTILO DEL BOTÓN AÑADIR AL CARRITO (MEJORADO) */
 .btn-agregar {
-    background-color: #333;
+    background-color: #e50914; 
     color: white;
     border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
+    padding: 8px 18px; 
+    border-radius: 50px; 
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.3s;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .btn-agregar:hover {
-    background-color: #e50914; /* Rojo de hover */
+    background-color: #c40710; 
+    transform: translateY(-1px);
 }
 
-#resumen-carrito p {
-    font-size: 1.2em;
-    font-weight: bold;
-    border-top: 2px solid #333;
-    padding-top: 10px;
+/* ======================================================= */
+/* 5. ESTILOS DE FORMULARIO Y FILTROS */
+/* ======================================================= */
+.opciones-busqueda {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #f0f0f0; 
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.search-container { flex-grow: 1; margin-right: 15px; }
+#searchInput { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1em; box-sizing: border-box; }
+
+.btn-filtro { background-color: #f0f0f0; color: #333; border: 1px solid #ccc; padding: 8px 15px; margin: 0 5px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: background-color 0.3s, color 0.3s; }
+.btn-filtro.active { background-color: #e50914; color: white; border-color: #e50914; }
+
+/* ======================================================= */
+/* 6. ESTILOS DE CARRITO Y BOTONES DE PAGO */
+/* ======================================================= */
+
+#lista-carrito { list-style: none; padding: 0; border-top: 1px solid #eee; margin-bottom: 15px; }
+#lista-carrito li { padding: 8px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+.carrito-subtotal { font-weight: bold; color: #e50914; }
+
+#proceder-pago {
+    width: 100%; padding: 15px; margin-top: 15px; border: none; border-radius: 8px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: background-color 0.3s, box-shadow 0.3s;
+    background-color: #e50914; color: white; 
+}
+#proceder-pago:disabled { background-color: #ccc; color: #666; cursor: not-allowed; box-shadow: none; }
+
+#metodos-pago-contenedor { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; }
+.btn-pago { width: 100%; padding: 12px 15px; border: none; border-radius: 6px; font-size: 1em; font-weight: 700; cursor: pointer; text-align: center; transition: background-color 0.2s, box-shadow 0.2s; line-height: 1.2; }
+.btn-pago[data-metodo="whatsapp"] { background-color: #25d366; color: white; }
+.btn-pago[data-metodo="yape_plin_qr"] { background-color: #ffcc00; color: #333; }
+.btn-pago[data-metodo="tarjeta"], .btn-pago[data-metodo="izipay_redirigir"] { background-color: #e50914; color: white; }
+
+/* Estilos de QR */
+.qr-container { padding: 15px; border: 1px dashed #e50914; border-radius: 8px; margin-top: 15px; }
+.qr-image { max-width: 180px; height: auto; border: 2px solid #fff; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); margin: 10px auto; display: block; }
+
+/* Estilos de Cartelera */
+#cartelera-cine {
+    margin-top: 30px;
+    padding: 20px;
+    border-top: 2px solid #e50914; 
+    background-color: #ffffff; 
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#cartelera-cine h2 {
+    color: #e50914;
+    font-size: 1.8em;
     margin-bottom: 15px;
 }
 
-#finalizar-compra {
+#cartelera-cine iframe {
     width: 100%;
-    background-color: #25d366; /* Verde WhatsApp */
-    color: white;
-    border: none;
-    padding: 15px;
-    font-size: 1.1em;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    min-height: 600px;
+    display: block;
+    margin: 15px 0;
 }
 
-#finalizar-compra:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-/* Estilo para ocultar el contenedor de pago inicialmente */
-#metodos-pago-contenedor.hidden {
-    display: none;
-}
-/* Estilo para el botón de eliminar del carrito */
-.btn-eliminar {
-    background-color: transparent;
-    color: #e50914; /* Rojo para el botón */
-    border: none;
-    cursor: pointer;
-    font-size: 1.1em;
-    padding: 0 5px;
-    margin-left: 10px;
-    transition: transform 0.2s;
-}
-
-.btn-eliminar:hover {
-    transform: scale(1.1);
-}
-
-/* Ajuste para la línea del carrito para alinear el botón */
-#lista-carrito li {
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: space-between; /* Permite que el botón se mueva al final */
-    align-items: center; /* Centra verticalmente */
-}
-/* ======================================================= */
-/* ESTILOS PARA LOS FILTROS DE CATEGORÍA */
-/* ======================================================= */
-.filtro-botones {
-    text-align: center;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.btn-filtro {
-    background-color: #f0f0f0;
-    color: #333;
-    border: 1px solid #ccc;
-    padding: 8px 15px;
-    margin: 0 5px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.btn-filtro:hover {
-    background-color: #e0e0e0;
-}
-
-/* Estilo para el botón de filtro activo (seleccionado) */
-.btn-filtro.active {
-    background-color: #e50914; /* Rojo Cineplanet */
-    color: white;
-    border-color: #e50914;
-}
-.qr-container {
-    padding: 15px;
-    border: 1px dashed #e50914; /* Borde rojo punteado */
-    border-radius: 8px;
+.nota-cartelera {
+    font-style: italic;
+    color: #555;
+    font-size: 0.9em;
     margin-top: 15px;
 }
 
-.qr-image {
-    max-width: 180px; /* Tamaño adecuado para un QR */
-    height: auto;
-    border: 2px solid #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    margin: 10px auto;
-    display: block; /* Centra la imagen */
-}
 
-/* Estilo para el botón de acción final (Ya Pagué / Pagar con Tarjeta) */
-.btn-pago-final {
-    background-color: #25d366; 
-    color: white;
-    padding: 10px;
-    margin-top: 10px;
-    width: 100%;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+/* ======================================================= */
+/* 7. BOTONES FLOTANTES Y FOOTER */
+/* ======================================================= */
+
+#redes-flotantes { position: fixed; right: 20px; bottom: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 1000; }
+#redes-flotantes a { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 24px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); text-decoration: none; transition: transform 0.2s; }
+#btn-flotante-whatsapp { background-color: #25d366; }
+#btn-flotante-facebook { background-color: #1877f2; }
+
+#contacto { background-color: transparent; padding: 20px; color: white; border-radius: 0; margin: 0 auto 10px; max-width: 1200px; }
+.info-contacto a { color: #ffcc00; text-decoration: none; font-weight: bold; }
+footer { text-align: center; padding: 10px 0 20px; background-color: #222; color: #aaa; margin-top: 20px; }
+
+
+/* ======================================================= */
+/* 8. DISEÑO ADAPTABLE (SOLUCIÓN FINAL MOBILE) */
+/* ======================================================= */
+
+@media (max-width: 900px) {
+    main { flex-direction: column; padding: 10px; margin-left: 0; margin-right: 0; }
+    #productos, #carrito-compras {
+        flex-basis: 100%; width: 100%; box-sizing: border-box; position: static; margin-left: 0; margin-right: 0; padding: 15px; 
+    }
+    #productos { order: 1; }
+    #carrito-compras { order: 2; margin-top: 20px; }
+
+    .opciones-busqueda { flex-direction: column; align-items: stretch; padding: 15px; }
+    .search-container { margin-right: 0; margin-bottom: 15px; }
+    .ordenar-container { width: 100%; text-align: left; }
+    #ordenarSelect { width: 100%; box-sizing: border-box; }
 }
