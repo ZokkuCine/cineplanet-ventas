@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,55 +21,94 @@
 
     <main>
         <section id="productos">
-        
             <h2>🍿 Nuestros Productos</h2>
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Buscar entradas o combos..." onkeyup="filtrarProductos()">
+            
+            <div class="opciones-busqueda">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Buscar entradas o combos..." onkeyup="filtrarProductos()">
+                </div>
+                <div class="ordenar-container">
+                    <label for="ordenarSelect">Ordenar por:</label>
+                    <select id="ordenarSelect" onchange="ordenarProductos(this.value)">
+                        <option value="default">Recomendado</option>
+                        <option value="precio_asc">Precio: Más barato</option>
+                        <option value="precio_desc">Precio: Más caro</option>
+                        <option value="nombre_asc">Nombre: A - Z</option>
+                    </select>
+                </div>
             </div>
+
             <ul id="lista-productos">
-                </ul>
-            <ul id="lista-productos">
-                </ul>
+            </ul>
         </section>
-    <section id="carrito-compras">
-        <h2>🛒 Tu Carrito</h2>
-        <ul id="lista-carrito">
-            <li class="carrito-vacio">El carrito está vacío.</li>
-        </ul>
-        <div id="resumen-carrito">
-            <p>Total: <span id="total-carrito">S/ 0.00</span></p>
-        </div>
-        
-        <button id="proceder-pago" disabled>Proceder al Pago</button>
 
-        <div id="metodos-pago-contenedor" class="hidden">
+        <section id="carrito-compras">
+            <h2>🛒 Tu Carrito</h2>
+            
+            <ul id="lista-carrito">
+                <li class="carrito-vacio">El carrito está vacío.</li>
+            </ul>
+            
+            <div id="resumen-carrito">
+                <p>Total: <span id="total-carrito">S/ 0.00</span></p>
+            </div>
+            
+            <button id="proceder-pago" disabled>Proceder al Pago</button>
+
+            <div id="metodos-pago-contenedor" class="hidden">
+                <h3>Selecciona tu Método de Pago:</h3>
+                
+                <button class="btn-pago" data-metodo="whatsapp">📲 Coordinar por WhatsApp</button>
+                <button class="btn-pago" data-metodo="yape_plin_qr">💳 Yape / Plin (Mostrar QR)</button>
+                <button class="btn-pago" data-metodo="tarjeta">🛒 Pagar con Tarjeta (Izipay)</button>
+                
+                <div id="info-pago-detalle"></div>
+            </div>
+            
+            <section id="cartelera-cine">
+                <h2>🎥 Cartelera de Películas</h2>
+                <iframe 
+                    src="https://www.cineplanet.com.pe/cartelera" 
+                    width="100%" 
+                    height="600" 
+                    style="border:1px solid #ccc; border-radius: 8px; overflow:hidden;" 
+                    scrolling="yes" 
+                    frameborder="0" 
+                    allowfullscreen="true">
+                </iframe>
+                <p class="nota-cartelera">
+                    **¡Compra tus entradas aquí!** La cartelera es referencial. Consulta horarios con tu vendedor.
+                </p>
+            </section>
+        </section>
+    </main>
+
+    <div id="redes-flotantes">
+        <a href="https://wa.me/51977875869?text=Hola,%20me%20interesa%20comprar%20combos%20de%20Cineplanet." target="_blank" id="btn-flotante-whatsapp" title="Contáctanos por WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61581437386047" target="_blank" id="btn-flotante-facebook" title="Síguenos en Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
     </div>
-    <h3>Selecciona tu Método de Pago:</h3>
-    
-    <button class="btn-pago" data-metodo="whatsapp">📲 Confirmar y Pagar por WhatsApp</button>
-    <button class="btn-pago" data-metodo="yape_plin_qr">💳 Yape / Plin (Mostrar QR)</button>
-    <button class="btn-pago" data-metodo="tarjeta">🛒 Pagar con Tarjeta de Crédito/Débito</button>
-
-    <div id="info-pago-detalle">
-        </div>
-</div>
-    </section>
-        </main>
 
     <footer>
-<section id="contacto">
-    <h2>📞 Contacto para Compras</h2>
-    <p>Realiza tu pedido o consulta por disponibilidad:</p>
-    <div class="info-contactohr
-        <p><strong>WhatsApp:</strong> <a href="#" id="whatsappLink" target="_blank"><span id="whatsappText"></span></a></p>
-        <p><strong>Teléfono:</strong> <a href="#" id="phoneLink"><span id="phoneText"></span></a></p>
-        <p><strong>Email:</strong> <a href="#" id="emailLink"><span id="emailText"></span></a></p>
-        <p class="nota-contacto">¡Pregunta por nuestros combos especiales y ofertas de entradas!</p>
-    </div>
-</section>
+        <section id="contacto">
+            <h2>📞 Contacto para Compras</h2>
+            <p>Realiza tu pedido o consulta por disponibilidad:</p>
+            <div class="info-contacto">
+                <p><strong>WhatsApp:</strong> <a href="#" id="whatsappLink" target="_blank"><span id="whatsappText"></span></a></p>
+                <p><strong>Teléfono:</strong> <a href="#" id="phoneLink"><span id="phoneText"></span></a></p>
+                <p><strong>Email:</strong> <a href="#" id="emailLink" target="_blank"><span id="emailText"></span></a></p>
+                <p class="nota-contacto">¡Pregunta por nuestros combos especiales y ofertas de entradas!</p>
+            </div>
+        </section>
         <p>&copy; 2024 Venta de Cineplanet. Todos los derechos reservados.</p>
     </footer>
 
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v24.0"></script>
+    
     <script src="app.js"></script>
 </body>
 </html>
