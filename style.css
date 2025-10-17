@@ -21,10 +21,9 @@ body {
 }
 
 /* ======================================================= */
-/* 2. HEADER CON IMAGEN TEMÁTICA (fondo_cine.jpg) */
+/* 2. HEADER CON IMAGEN TEMÁTICA */
 /* ======================================================= */
 header {
-    /* AQUÍ SE CARGA LA IMAGEN PARA EL ENCABEZADO */
     background: url('imagenes/fondo_cine.jpg') no-repeat center center;
     background-size: cover; 
     
@@ -44,7 +43,93 @@ header h1 {
 }
 
 /* ======================================================= */
-/* 3. LAYOUT PRINCIPAL (FLEXBOX Y ANCHOS CORRECTOS) */
+/* 3. ESTILOS DEL MODAL DE BIENVENIDA (SOLUCIONADO) */
+/* ======================================================= */
+#modal-bienvenida {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; 
+    visibility: hidden; 
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s;
+}
+
+/* Estado activo (visible - controlado por JS) */
+#modal-bienvenida.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-contenido {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+}
+
+.modal-contenido h2 {
+    color: #e50914;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.campo {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.campo label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.campo input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+#iniciar-compra-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #25d366; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#iniciar-compra-btn:hover {
+    background-color: #128c7e;
+}
+
+.nota-modal {
+    margin-top: 15px;
+    font-size: 0.85em;
+    color: #666;
+}
+
+/* ======================================================= */
+/* 4. LAYOUT PRINCIPAL (FLEXBOX Y ANCHOS CORRECTOS) */
 /* ======================================================= */
 
 main {
@@ -80,7 +165,7 @@ main {
 }
 
 /* ======================================================= */
-/* OCULTAR ELEMENTO CRÍTICO */
+/* 5. OCULTAR ELEMENTO CRÍTICO */
 /* ======================================================= */
 
 #metodos-pago-contenedor.hidden {
@@ -88,7 +173,7 @@ main {
 }
 
 /* ======================================================= */
-/* 4. ESTILOS DE PRODUCTOS Y LISTA */
+/* 6. ESTILOS DE PRODUCTOS Y LISTA */
 /* ======================================================= */
 
 #lista-productos h3 {
@@ -147,7 +232,7 @@ main {
 }
 
 /* ======================================================= */
-/* 5. ESTILOS DE FORMULARIO Y FILTROS */
+/* 7. ESTILOS DE FORMULARIO Y FILTROS */
 /* ======================================================= */
 .opciones-busqueda {
     display: flex; 
@@ -166,7 +251,7 @@ main {
 .btn-filtro.active { background-color: #e50914; color: white; border-color: #e50914; }
 
 /* ======================================================= */
-/* 6. ESTILOS DE CARRITO Y BOTONES DE PAGO */
+/* 8. ESTILOS DE CARRITO Y BOTONES DE PAGO */
 /* ======================================================= */
 
 #lista-carrito { list-style: none; padding: 0; border-top: 1px solid #eee; margin-bottom: 15px; }
@@ -222,7 +307,7 @@ main {
 
 
 /* ======================================================= */
-/* 7. BOTONES FLOTANTES Y FOOTER */
+/* 9. BOTONES FLOTANTES Y FOOTER */
 /* ======================================================= */
 
 #redes-flotantes { position: fixed; right: 20px; bottom: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 1000; }
@@ -236,7 +321,7 @@ footer { text-align: center; padding: 10px 0 20px; background-color: #222; color
 
 
 /* ======================================================= */
-/* 8. DISEÑO ADAPTABLE (SOLUCIÓN FINAL MOBILE) */
+/* 10. DISEÑO ADAPTABLE (SOLUCIÓN FINAL MOBILE) */
 /* ======================================================= */
 
 @media (max-width: 900px) {
