@@ -67,16 +67,13 @@
             
             <section id="cartelera-cine">
                 <h2>🎥 Cartelera de Películas</h2>
-                <iframe 
-                    src="https://www.cineplanet.com.pe/cartelera" 
-                    width="100%" 
-                    height="600" 
-                    style="border:1px solid #ccc; border-radius: 8px; overflow:hidden;" 
-                    scrolling="yes" 
-                    frameborder="0" 
-                    allowfullscreen="true">
-                </iframe>
-                <p class="nota-cartelera">
+                <p>
+                    Debido a restricciones de seguridad web, la cartelera oficial no se puede mostrar aquí.
+                </p>
+                <a href="https://www.cineplanet.com.pe/cartelera" target="_blank" class="btn-ver-cartelera">
+                    Ver Cartelera Oficial de Cineplanet
+                </a>
+                <p class="nota-cartelera" style="margin-top: 20px;">
                     **¡Compra tus entradas aquí!** La cartelera es referencial. Consulta horarios con tu vendedor.
                 </p>
             </section>
@@ -105,6 +102,33 @@
         </section>
         <p>&copy; 2024 Venta de Cineplanet. Todos los derechos reservados.</p>
     </footer>
+
+    <div id="modal-bienvenida" class="active">
+        <div class="modal-contenido">
+            <h2>¡Hola! Cuéntanos sobre tu compra 🍿</h2>
+            <form id="formulario-bienvenida">
+                
+                <div class="campo">
+                    <label for="clienteNombre">Tu Nombre:</label>
+                    <input type="text" id="clienteNombre" placeholder="Ingresa tu nombre" required>
+                </div>
+
+                <div class="campo">
+                    <label for="peliculaDeseada">¿Qué película deseas ver?</label>
+                    <input type="text" id="peliculaDeseada" placeholder="Ej: Intensamente 2, Deadpool, etc." required>
+                </div>
+                
+                <div class="campo">
+                    <label for="sedeCineplanet">¿Para qué sede de Cineplanet deseas comprar?</label>
+                    <input type="text" id="sedeCineplanet" placeholder="Ej: Alcázar, San Miguel, etc." required>
+                </div>
+                
+                <button type="submit" id="iniciar-compra-btn">Iniciar Compra y Ver Productos</button>
+            </form>
+            <p class="nota-modal">Tu información nos ayuda a darte una atención más rápida por WhatsApp.</p>
+        </div>
+    </div>
+
 
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v24.0"></script>
