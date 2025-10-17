@@ -9,10 +9,17 @@ const metodosPagoContenedor = document.getElementById('metodos-pago-contenedor')
 const infoPagoDetalleDiv = document.getElementById('info-pago-detalle'); 
 const qrImageUrl = 'imagenes/qr_izipay_yape_plin.jpg'; 
 
+// NUEVAS VARIABLES PARA LOS DATOS DEL CLIENTE
+let datosCliente = {
+    nombre: '',
+    pelicula: '',
+    sede: ''
+};
+
 const infoContacto = {
     numeroTelefono: '+51977875869', 
     email: 'mundocine10.cp@gmail.com',
-    whatsappMensaje: 'Hola, estoy interesado en comprar entradas y combos de Cineplanet. ¿Me puedes dar información?' 
+    whatsappMensaje: 'Hola, estoy interesado en comprar entradas y combos de Cineplanet.' 
 };
 const urlPasarelaIzipay = 'https://link.izipay.pe/tu-link-de-pago';
 
@@ -175,7 +182,12 @@ function cargarCarrito() {
 // =======================================================
 
 function generarMensajePedido() {
-    let mensaje = "¡Hola! Quisiera realizar el siguiente pedido de Cineplanet:\n\n";
+    // INFORMACIÓN DEL CLIENTE CAPTURADA DEL MODAL
+    let mensaje = `¡Hola! Soy ${datosCliente.nombre || 'un cliente'}. `;
+    mensaje += `Quiero comprar entradas para la película "${datosCliente.pelicula || 'no especificada'}" `;
+    mensaje += `en la sede de "${datosCliente.sede || 'no especificada'}".\n\n`;
+    mensaje += "Mi pedido es el siguiente:\n\n";
+
     let total = 0;
     carrito.forEach(item => {
         const subtotal = item.precio * item.cantidad;
@@ -232,9 +244,37 @@ function manejarPago(metodo) {
     infoPagoDetalleDiv.classList.remove('hidden'); 
 }
 
+// =======================================================
+// 7. LÓGICA DE LA VENTANA DE BIENVENIDA
+// =======================================================
+// Configuramos el modal DENTRO de una función para asegurar que el DOM esté cargado.
+function configurarModal() {
+    const modalBienvenida = document.getElementById('modal-bienvenida');
+    const formularioBienvenida = document.getElementById('formulario-bienvenida');
+
+    if (modalBienvenida && formularioBienvenida) {
+        // Muestra el modal al cargar
+        modalBienvenida.classList.add('active'); 
+
+        formularioBienvenida.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // 1. Captura la información
+            datosCliente.nombre = document.getElementById('clienteNombre').value.trim();
+            datosCliente.pelicula = document.getElementById('peliculaDeseada').value.trim();
+            datosCliente.sede = document.getElementById('sedeCineplanet').value.trim();
+            
+            // 2. Oculta el modal 
+            modalBienvenida.classList.remove('active');
+            
+            console.log("Datos del cliente capturados:", datosCliente);
+        });
+    }
+}
+
 
 // =======================================================
-// 7. EJECUCIÓN INICIAL Y ASIGNACIÓN DE EVENTOS
+// 8. EJECUCIÓN INICIAL Y ASIGNACIÓN DE EVENTOS
 // =======================================================
 
 // 1. Carga el carrito guardado antes de mostrar los productos
@@ -244,6 +284,7 @@ cargarCarrito();
 mostrarProductos(productosCine);
 cargarContacto(); 
 mostrarBotonesFiltro(); 
+configurarModal(); // <-- ¡SOLUCIÓN! Llama a la función que configura y muestra el modal
 
 // 3. Escuchador Global de Clicks para manejar TODOS los botones
 document.addEventListener('click', function(event) {
@@ -268,7 +309,10 @@ document.addEventListener('click', function(event) {
     
     // 4. Manejar Clic en botón "Proceder al Pago" (ABRE LAS OPCIONES)
     else if (event.target.id === 'proceder-pago') {
-        metodosPagoContenedor.classList.toggle('hidden');
+        const metodosPagoContenedor = document.getElementById('metodos-pago-contenedor');
+        if (metodosPagoContenedor) {
+            metodosPagoContenedor.classList.toggle('hidden');
+        }
     }
 
     // 5. Manejar Clic en botones de "Método de Pago" (Incluye botones finales)
